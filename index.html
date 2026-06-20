@@ -151,12 +151,60 @@ pre{padding:1rem;overflow-x:auto;font-size:12.5px;line-height:1.7;font-family:va
 /* FREE VIBRATION */
 .free-grid{display:grid;grid-template-columns:260px 1fr;gap:1.25rem;align-items:start}
 
+/* HAMBURGER NAV */
+.nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px;color:var(--text2)}
+.nav-hamburger svg{display:block}
+.nav-mobile-menu{display:none;position:fixed;top:52px;left:0;right:0;background:rgba(11,15,26,0.98);backdrop-filter:blur(12px);border-bottom:0.5px solid var(--border);z-index:99;padding:.5rem 0;flex-direction:column}
+.nav-mobile-menu.open{display:flex}
+.nav-mobile-link{padding:12px 1.5rem;font-size:14px;color:var(--text2);cursor:pointer;border-left:3px solid transparent;transition:all .2s}
+.nav-mobile-link:hover,.nav-mobile-link.active{color:var(--cyan);border-left-color:var(--cyan);background:rgba(56,189,248,0.05)}
+
+/* ROOT FINDING */
+.rf-method-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:.5rem;margin-bottom:1.25rem}
+.rf-method-btn{padding:8px 6px;border-radius:8px;font-size:12px;font-weight:500;cursor:pointer;border:0.5px solid var(--border2);background:transparent;color:var(--text2);transition:all .2s;text-align:center}
+.rf-method-btn:hover{background:var(--bg3);color:var(--text)}
+.rf-method-btn.active{background:rgba(56,189,248,0.15);color:var(--cyan);border-color:var(--cyan)}
+.rf-panel{display:none}.rf-panel.active{display:block}
+.rf-input-row{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:.75rem}
+.rf-input-group{display:flex;flex-direction:column;gap:4px}
+.rf-input-group label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.04em}
+.rf-input-group input{background:var(--bg3);border:0.5px solid var(--border2);border-radius:6px;color:var(--text);font-family:var(--font-mono);font-size:13px;padding:7px 10px;outline:none;transition:border-color .2s}
+.rf-input-group input:focus{border-color:var(--cyan)}
+.rf-run-btn{width:100%;padding:10px;background:rgba(56,189,248,0.12);border:0.5px solid var(--cyan);border-radius:8px;color:var(--cyan);font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;margin:.75rem 0}
+.rf-run-btn:hover{background:rgba(56,189,248,0.22)}
+.rf-result-box{background:var(--bg3);border:0.5px solid var(--border2);border-radius:8px;padding:1rem;margin:.5rem 0;font-family:var(--font-mono);font-size:13px}
+.rf-result-root{font-size:20px;font-weight:700;color:var(--green);margin-bottom:.25rem}
+.rf-result-meta{font-size:12px;color:var(--text3)}
+.rf-iter-table{width:100%;border-collapse:collapse;font-size:11.5px;font-family:var(--font-mono);margin-top:.75rem;overflow:hidden;border-radius:6px}
+.rf-iter-table th{background:var(--bg);color:var(--text3);padding:6px 8px;text-align:right;font-size:10px;text-transform:uppercase;letter-spacing:.04em;border-bottom:0.5px solid var(--border2)}
+.rf-iter-table th:first-child{text-align:center}
+.rf-iter-table td{padding:5px 8px;border-bottom:0.5px solid var(--border);text-align:right;color:var(--text2)}
+.rf-iter-table td:first-child{text-align:center;color:var(--cyan)}
+.rf-iter-table tr:last-child td{color:var(--green)}
+.rf-error{color:var(--red);font-size:13px;padding:.5rem;background:rgba(248,113,113,0.08);border-radius:6px;border:0.5px solid rgba(248,113,113,0.3);margin:.5rem 0}
+.rf-theory-card{background:var(--bg3);border:0.5px solid var(--border);border-radius:8px;padding:.9rem 1rem;margin-bottom:.75rem}
+.rf-theory-card h4{font-size:13px;font-weight:600;color:var(--teal);margin-bottom:.4rem}
+.rf-theory-card p{font-size:12px;color:var(--text2);line-height:1.7}
+.rf-conv-badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600;margin-left:6px}
+.rf-conv-linear{background:rgba(251,191,36,0.15);color:var(--amber);border:0.5px solid rgba(251,191,36,0.3)}
+.rf-conv-quad{background:rgba(74,222,128,0.15);color:var(--green);border:0.5px solid rgba(74,222,128,0.3)}
+.rf-conv-super{background:rgba(45,212,191,0.15);color:var(--teal);border:0.5px solid rgba(45,212,191,0.3)}
+.rf-chart-wrap{margin-top:1rem;background:var(--bg3);border:0.5px solid var(--border);border-radius:8px;padding:.75rem;overflow:hidden}
+
 @media(max-width:768px){
   .grid-sim,.free-grid,.two-lang,.stab-grid{grid-template-columns:1fr}
   .grid-4,.grid-3,.grid-2{grid-template-columns:1fr 1fr}
   .hero h1{font-size:28px}
   nav{padding:0 1rem}
   .page{padding:1rem}
+  .nav-links{display:none}
+  .nav-hamburger{display:block}
+  .rf-method-grid{grid-template-columns:repeat(3,1fr)}
+  .rf-input-row{grid-template-columns:1fr}
+  .grid-4{grid-template-columns:1fr 1fr}
+  .hero p{font-size:14px}
+  .tabs{overflow-x:auto;flex-wrap:nowrap;padding-bottom:4px}
+  .tab{white-space:nowrap}
 }
 </style>
 </head>
@@ -172,10 +220,24 @@ pre{padding:1rem;overflow-x:auto;font-size:12.5px;line-height:1.7;font-family:va
       <div class="nav-link" onclick="showPage('forced')">බල කම්පනය</div>
       <div class="nav-link" onclick="showPage('error')">දෝෂ විශ්ලේෂණය</div>
       <div class="nav-link" onclick="showPage('stability')">ස්ථායිතාව</div>
+      <div class="nav-link" onclick="showPage('rootfinding')">Root Finding</div>
       <div class="nav-link" onclick="showPage('code')">කේත</div>
     </div>
+    <button class="nav-hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect y="4" width="22" height="2" rx="1" fill="currentColor"/><rect y="10" width="22" height="2" rx="1" fill="currentColor"/><rect y="16" width="22" height="2" rx="1" fill="currentColor"/></svg>
+    </button>
   </div>
 </nav>
+<div class="nav-mobile-menu" id="mobile-menu">
+  <div class="nav-mobile-link active" onclick="showPage('home');closeMobileMenu()">🏠 නිවස / Home</div>
+  <div class="nav-mobile-link" onclick="showPage('theory');closeMobileMenu()">📐 න්‍යාය / Theory</div>
+  <div class="nav-mobile-link" onclick="showPage('free');closeMobileMenu()">〰 නිදහස් කම්පනය / Free Vibration</div>
+  <div class="nav-mobile-link" onclick="showPage('forced');closeMobileMenu()">🌊 බල කම්පනය / Forced Vibration</div>
+  <div class="nav-mobile-link" onclick="showPage('error');closeMobileMenu()">📊 දෝෂ විශ්ලේෂණය / Error Analysis</div>
+  <div class="nav-mobile-link" onclick="showPage('stability');closeMobileMenu()">⚖ ස්ථායිතාව / Stability</div>
+  <div class="nav-mobile-link" onclick="showPage('rootfinding');closeMobileMenu()">🎯 Root Finding</div>
+  <div class="nav-mobile-link" onclick="showPage('code');closeMobileMenu()">💻 කේත / Code</div>
+</div>
 
 <!-- ═══════════════════════ HOME ═══════════════════════ -->
 <div id="page-home" class="page active">
@@ -188,8 +250,9 @@ pre{padding:1rem;overflow-x:auto;font-size:12.5px;line-height:1.7;font-family:va
       <span class="badge badge-amber">Resonance Analysis</span>
       <span class="badge badge-cyan">Error Analysis</span>
       <span class="badge badge-teal">Stability Analysis</span>
-      <span class="badge badge-amber">C++ Logic</span>
-      <span class="badge badge-cyan">R Visualization</span>
+      <span class="badge badge-amber">Root Finding</span>
+      <span class="badge badge-cyan">C++ Logic</span>
+      <span class="badge badge-teal">R Visualization</span>
     </div>
   </div>
 
@@ -201,6 +264,10 @@ pre{padding:1rem;overflow-x:auto;font-size:12.5px;line-height:1.7;font-family:va
     <div class="card" style="cursor:pointer" onclick="showPage('forced')">
       <div class="card-title">🌊 Forced Vibration Simulator</div>
       <p style="font-size:13px;color:var(--text2)">Real-time resonance visualization with interactive parameters and method comparison.</p>
+    </div>
+    <div class="card" style="cursor:pointer" onclick="showPage('rootfinding')">
+      <div class="card-title">🎯 Root Finding Methods</div>
+      <p style="font-size:13px;color:var(--text2)">Bisection, Newton-Raphson, Fixed-Point, Regula-Falsi, and Müller — with iteration tables and charts.</p>
     </div>
     <div class="card" style="cursor:pointer" onclick="showPage('code')">
       <div class="card-title">💻 C++ & R Code</div>
@@ -527,6 +594,171 @@ pre{padding:1rem;overflow-x:auto;font-size:12.5px;line-height:1.7;font-family:va
   </div>
 
   <canvas id="stab-chart" style="width:100%;border-radius:8px"></canvas>
+</div>
+
+<!-- ═══════════════════════ ROOT FINDING ═══════════════════════ -->
+<div id="page-rootfinding" class="page">
+  <div class="sec-heading">Root Finding Methods / සමීකරණ මූල සෙවීම</div>
+  <div class="sec-sub">Numerical techniques to find roots of f(x) = 0 — with step-by-step iteration tables and convergence charts</div>
+
+  <!-- Method selector -->
+  <div class="rf-method-grid">
+    <button class="rf-method-btn active" onclick="rfSetMethod('bisection')">Bisection</button>
+    <button class="rf-method-btn" onclick="rfSetMethod('newton')">Newton-Raphson</button>
+    <button class="rf-method-btn" onclick="rfSetMethod('iteration')">Fixed-Point<br>Iteration</button>
+    <button class="rf-method-btn" onclick="rfSetMethod('regulafalsi')">Regula-Falsi</button>
+    <button class="rf-method-btn" onclick="rfSetMethod('muller')">Müller</button>
+  </div>
+
+  <div class="grid-sim" style="grid-template-columns:300px 1fr">
+
+    <!-- LEFT PANEL: inputs per method -->
+    <div>
+      <!-- BISECTION -->
+      <div id="rf-panel-bisection" class="rf-panel active card">
+        <div class="card-title">🎯 Bisection Method</div>
+        <div class="rf-theory-card">
+          <h4>Algorithm <span class="rf-conv-badge rf-conv-linear">Linear Conv.</span></h4>
+          <p>Brackets a root between [a,b] where f(a)·f(b) &lt; 0. Repeatedly halves the interval by checking the midpoint sign. Guaranteed convergence; O(log₂((b-a)/ε)) iterations.</p>
+        </div>
+        <div class="rf-input-group" style="margin-bottom:.6rem">
+          <label>f(x) =</label>
+          <input type="text" id="bis-fx" value="x^3 - x - 2" placeholder="e.g. x^3 - x - 2">
+        </div>
+        <div class="rf-input-row">
+          <div class="rf-input-group"><label>a (lower)</label><input type="number" id="bis-a" value="1"></div>
+          <div class="rf-input-group"><label>b (upper)</label><input type="number" id="bis-b" value="2"></div>
+        </div>
+        <div class="rf-input-row">
+          <div class="rf-input-group"><label>Tolerance ε</label><input type="number" id="bis-tol" value="0.0001" step="0.00001"></div>
+          <div class="rf-input-group"><label>Max Iter</label><input type="number" id="bis-max" value="50"></div>
+        </div>
+        <button class="rf-run-btn" onclick="rfRunBisection()">▶ Solve</button>
+        <div id="bis-result"></div>
+      </div>
+
+      <!-- NEWTON -->
+      <div id="rf-panel-newton" class="rf-panel card">
+        <div class="card-title">📐 Newton-Raphson Method</div>
+        <div class="rf-theory-card">
+          <h4>Algorithm <span class="rf-conv-badge rf-conv-quad">Quadratic Conv.</span></h4>
+          <p>Uses tangent line approximation: xₙ₊₁ = xₙ − f(xₙ)/f'(xₙ). Fastest convergence near root. Requires derivative; may diverge if x₀ is far from root.</p>
+        </div>
+        <div class="rf-input-group" style="margin-bottom:.6rem">
+          <label>f(x) =</label>
+          <input type="text" id="nr-fx" value="x^3 - x - 2" placeholder="e.g. cos(x) - x">
+        </div>
+        <div class="rf-input-group" style="margin-bottom:.6rem">
+          <label>f'(x) = (leave blank for auto)</label>
+          <input type="text" id="nr-dfx" value="" placeholder="auto-computed via mathjs">
+        </div>
+        <div class="rf-input-row">
+          <div class="rf-input-group"><label>x₀ (initial)</label><input type="number" id="nr-x0" value="1.5"></div>
+          <div class="rf-input-group"><label>Tolerance ε</label><input type="number" id="nr-tol" value="0.0001" step="0.00001"></div>
+        </div>
+        <div class="rf-input-group" style="margin-bottom:.6rem">
+          <label>Max Iter</label><input type="number" id="nr-max" value="50">
+        </div>
+        <button class="rf-run-btn" onclick="rfRunNewton()">▶ Solve</button>
+        <div id="nr-result"></div>
+      </div>
+
+      <!-- ITERATION -->
+      <div id="rf-panel-iteration" class="rf-panel card">
+        <div class="card-title">🔄 Fixed-Point Iteration</div>
+        <div class="rf-theory-card">
+          <h4>Algorithm <span class="rf-conv-badge rf-conv-linear">Linear Conv.</span></h4>
+          <p>Rewrites f(x)=0 as x = g(x) then iterates xₙ₊₁ = g(xₙ). Converges when |g'(x)| &lt; 1 near root. Choose g(x) carefully for convergence.</p>
+        </div>
+        <div class="rf-input-group" style="margin-bottom:.6rem">
+          <label>g(x) = (x in terms of itself)</label>
+          <input type="text" id="fp-gx" value="(x^2 + 2) / (3*x - 1)" placeholder="e.g. (x+2/x)/2">
+        </div>
+        <div class="rf-input-row">
+          <div class="rf-input-group"><label>x₀ (initial)</label><input type="number" id="fp-x0" value="1.5"></div>
+          <div class="rf-input-group"><label>Tolerance ε</label><input type="number" id="fp-tol" value="0.0001" step="0.00001"></div>
+        </div>
+        <div class="rf-input-group" style="margin-bottom:.6rem">
+          <label>Max Iter</label><input type="number" id="fp-max" value="50">
+        </div>
+        <button class="rf-run-btn" onclick="rfRunIteration()">▶ Solve</button>
+        <div id="fp-result"></div>
+      </div>
+
+      <!-- REGULA FALSI -->
+      <div id="rf-panel-regulafalsi" class="rf-panel card">
+        <div class="card-title">📏 Regula-Falsi (False Position)</div>
+        <div class="rf-theory-card">
+          <h4>Algorithm <span class="rf-conv-badge rf-conv-super">Superlinear Conv.</span></h4>
+          <p>Like bisection but uses linear interpolation instead of midpoint: c = (a·f(b) − b·f(a)) / (f(b)−f(a)). Faster than bisection, guaranteed like bisection.</p>
+        </div>
+        <div class="rf-input-group" style="margin-bottom:.6rem">
+          <label>f(x) =</label>
+          <input type="text" id="rf-fx" value="x^3 - x - 2" placeholder="e.g. x^3 - x - 2">
+        </div>
+        <div class="rf-input-row">
+          <div class="rf-input-group"><label>a (lower)</label><input type="number" id="rf-a" value="1"></div>
+          <div class="rf-input-group"><label>b (upper)</label><input type="number" id="rf-b" value="2"></div>
+        </div>
+        <div class="rf-input-row">
+          <div class="rf-input-group"><label>Tolerance ε</label><input type="number" id="rf-tol" value="0.0001" step="0.00001"></div>
+          <div class="rf-input-group"><label>Max Iter</label><input type="number" id="rf-max" value="50"></div>
+        </div>
+        <button class="rf-run-btn" onclick="rfRunRegulaFalsi()">▶ Solve</button>
+        <div id="rf-result"></div>
+      </div>
+
+      <!-- MULLER -->
+      <div id="rf-panel-muller" class="rf-panel card">
+        <div class="card-title">🔬 Müller's Method</div>
+        <div class="rf-theory-card">
+          <h4>Algorithm <span class="rf-conv-badge rf-conv-quad">≈ Quadratic Conv.</span></h4>
+          <p>Fits a parabola through three points (x₀,x₁,x₂) and uses the quadratic formula to find the next iterate. Can find complex roots; convergence order ≈ 1.84.</p>
+        </div>
+        <div class="rf-input-group" style="margin-bottom:.6rem">
+          <label>f(x) =</label>
+          <input type="text" id="ml-fx" value="x^3 - x - 2" placeholder="e.g. x^3 - 13x - 12">
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.5rem;margin-bottom:.6rem">
+          <div class="rf-input-group"><label>x₀</label><input type="number" id="ml-x0" value="0"></div>
+          <div class="rf-input-group"><label>x₁</label><input type="number" id="ml-x1" value="1"></div>
+          <div class="rf-input-group"><label>x₂</label><input type="number" id="ml-x2" value="2"></div>
+        </div>
+        <div class="rf-input-row">
+          <div class="rf-input-group"><label>Tolerance ε</label><input type="number" id="ml-tol" value="0.0001" step="0.00001"></div>
+          <div class="rf-input-group"><label>Max Iter</label><input type="number" id="ml-max" value="50"></div>
+        </div>
+        <button class="rf-run-btn" onclick="rfRunMuller()">▶ Solve</button>
+        <div id="ml-result"></div>
+      </div>
+    </div>
+
+    <!-- RIGHT PANEL: chart + table -->
+    <div>
+      <div class="rf-chart-wrap">
+        <canvas id="rf-chart" style="width:100%;max-height:300px"></canvas>
+      </div>
+      <div style="margin-top:1rem;overflow-x:auto" id="rf-iter-wrap"></div>
+    </div>
+  </div>
+
+  <!-- Comparison card -->
+  <hr class="divider">
+  <div class="sec-heading" style="font-size:16px;margin-bottom:.5rem">Method Comparison</div>
+  <div class="grid-3" style="margin-top:.75rem">
+    <div class="rf-theory-card">
+      <h4>Bracketing Methods</h4>
+      <p><strong style="color:var(--cyan)">Bisection & Regula-Falsi</strong> require f(a)·f(b)&lt;0. They always converge but may be slow. Regula-Falsi uses interpolation so usually faster. Best when you can bracket the root.</p>
+    </div>
+    <div class="rf-theory-card">
+      <h4>Open Methods</h4>
+      <p><strong style="color:var(--cyan)">Newton-Raphson & Fixed-Point</strong> need only one starting point. Newton is the fastest (quadratic) but needs derivative. Fixed-Point needs a clever g(x) to guarantee convergence.</p>
+    </div>
+    <div class="rf-theory-card">
+      <h4>Polynomial Methods</h4>
+      <p><strong style="color:var(--cyan)">Müller's Method</strong> uses three points to fit a parabola. Nearly quadratic convergence and can find complex roots — ideal for polynomial equations.</p>
+    </div>
+  </div>
 </div>
 
 <!-- ═══════════════════════ CODE ═══════════════════════ -->
@@ -905,11 +1137,13 @@ let errTab='solutions', codeTab='cpp';
 function showPage(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));
+  document.querySelectorAll('.nav-mobile-link').forEach(l=>l.classList.remove('active'));
   document.getElementById('page-'+id).classList.add('active');
   const links=document.querySelectorAll('.nav-link');
-  const order=['home','theory','free','forced','error','stability','code'];
+  const mlinks=document.querySelectorAll('.nav-mobile-link');
+  const order=['home','theory','free','forced','error','stability','rootfinding','code'];
   const idx=order.indexOf(id);
-  if(idx>=0) links[idx].classList.add('active');
+  if(idx>=0){links[idx].classList.add('active');mlinks[idx].classList.add('active');}
   if(id==='free') updateFree();
   if(id==='forced') updateForced();
   if(id==='error') updateError();
@@ -1205,6 +1439,211 @@ function copyCode(id){
     const btn=event.target; btn.textContent='Copied!'; btn.style.color='#2dd4bf';
     setTimeout(()=>{btn.textContent='Copy';btn.style.color='';},2000);
   });
+}
+
+// ─── MOBILE MENU ─────────────────────────────────────────
+function toggleMobileMenu(){
+  const m=g('mobile-menu'); m.classList.toggle('open');
+}
+function closeMobileMenu(){
+  g('mobile-menu').classList.remove('open');
+}
+document.addEventListener('click',function(e){
+  const menu=g('mobile-menu');
+  const btn=document.querySelector('.nav-hamburger');
+  if(menu.classList.contains('open') && !menu.contains(e.target) && !btn.contains(e.target)){
+    menu.classList.remove('open');
+  }
+});
+
+// ─── ROOT FINDING ─────────────────────────────────────────
+let rfChart=null;
+let rfCurrentMethod='bisection';
+
+function rfSetMethod(m){
+  rfCurrentMethod=m;
+  document.querySelectorAll('.rf-method-btn').forEach(b=>b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('.rf-panel').forEach(p=>p.classList.remove('active'));
+  g('rf-panel-'+m).classList.add('active');
+  g('rf-iter-wrap').innerHTML='';
+  if(rfChart){rfChart.destroy();rfChart=null;}
+}
+
+function rfEval(expr,x){
+  try{return math.evaluate(expr,{x});}catch(e){return NaN;}
+}
+
+function rfDerivative(expr){
+  try{const node=math.parse(expr);const d=math.derivative(node,'x');return (x)=>d.evaluate({x});}
+  catch(e){return null;}
+}
+
+function rfShowResult(containerId, root, iters, converged, extraMsg=''){
+  const el=g(containerId);
+  if(!converged){
+    el.innerHTML=`<div class="rf-error">⚠ ${extraMsg||'Did not converge within max iterations.'}</div>`;
+    return;
+  }
+  el.innerHTML=`
+    <div class="rf-result-box">
+      <div class="rf-result-meta">Root found in <strong style="color:var(--cyan)">${iters}</strong> iterations</div>
+      <div class="rf-result-root">x ≈ ${root.toFixed(10)}</div>
+      ${extraMsg?`<div class="rf-result-meta" style="color:var(--teal);margin-top:4px">${extraMsg}</div>`:''}
+    </div>`;
+}
+
+function rfShowTable(rows, headers){
+  const th=headers.map(h=>`<th>${h}</th>`).join('');
+  const td=rows.map(r=>`<tr>${r.map(c=>`<td>${typeof c==='number'?(Math.abs(c)<1e-10?c.toExponential(4):c.toPrecision(8)):c}</td>`).join('')}</tr>`).join('');
+  g('rf-iter-wrap').innerHTML=`<table class="rf-iter-table"><thead><tr>${th}</tr></thead><tbody>${td}</tbody></table>`;
+}
+
+function rfBuildChart(labels, data, yLabel, title){
+  if(rfChart){rfChart.destroy();rfChart=null;}
+  const ctx=g('rf-chart').getContext('2d');
+  rfChart=new Chart(ctx,{
+    type:'line',
+    data:{labels,datasets:[{label:yLabel,data,borderColor:'#38bdf8',borderWidth:2,pointRadius:3,pointBackgroundColor:'#38bdf8',tension:0.1}]},
+    options:{animation:false,responsive:true,
+      plugins:{legend:{labels:{color:'#e2e8f0',font:{size:11}}},title:{display:true,text:title,color:'#94a3b8',font:{size:12}}},
+      scales:{x:{title:{display:true,text:'Iteration',color:'#94a3b8',font:{size:11}},ticks:{color:'#94a3b8',font:{size:10}},grid:{color:'rgba(99,179,237,0.08)'}},
+        y:{title:{display:true,text:yLabel,color:'#94a3b8',font:{size:11}},ticks:{color:'#94a3b8',font:{size:10}},grid:{color:'rgba(99,179,237,0.08)'}}}}
+  });
+}
+
+// BISECTION
+function rfRunBisection(){
+  const fxStr=g('bis-fx').value.trim();
+  let a=+g('bis-a').value, b=+g('bis-b').value;
+  const tol=+g('bis-tol').value, maxIter=+g('bis-max').value;
+  const f=x=>rfEval(fxStr,x);
+  if(f(a)*f(b)>0){g('bis-result').innerHTML='<div class="rf-error">f(a) and f(b) must have opposite signs!</div>';return;}
+  const rows=[]; const xVals=[]; const errVals=[];
+  let converged=false; let root=0; let iter=0;
+  for(let i=1;i<=maxIter;i++){
+    const c=(a+b)/2; const fc=f(c); const err=Math.abs(b-a)/2;
+    rows.push([i, +a.toPrecision(8), +b.toPrecision(8), +c.toPrecision(8), +f(a).toPrecision(6), +fc.toPrecision(6), +err.toExponential(4)]);
+    xVals.push(i); errVals.push(err);
+    if(err<tol||Math.abs(fc)<tol){root=c;iter=i;converged=true;break;}
+    if(f(a)*fc<0)b=c; else a=c;
+    iter=i; root=c;
+  }
+  rfShowResult('bis-result', root, iter, converged);
+  rfShowTable(rows,['n','a','b','c = (a+b)/2','f(a)','f(c)','|b-a|/2']);
+  rfBuildChart(xVals, errVals, '|b-a|/2 (error)', 'Bisection — Error vs Iteration');
+}
+
+// NEWTON-RAPHSON
+function rfRunNewton(){
+  const fxStr=g('nr-fx').value.trim();
+  const dfxStr=g('nr-dfx').value.trim();
+  let x=+g('nr-x0').value;
+  const tol=+g('nr-tol').value, maxIter=+g('nr-max').value;
+  const f=xv=>rfEval(fxStr,xv);
+  let df;
+  if(dfxStr){df=xv=>rfEval(dfxStr,xv);}
+  else{const dAuto=rfDerivative(fxStr);if(!dAuto){g('nr-result').innerHTML='<div class="rf-error">Could not auto-differentiate. Please enter f\'(x) manually.</div>';return;}df=dAuto;}
+  const rows=[]; const xVals=[]; const errVals=[];
+  let converged=false; let root=x; let iter=0;
+  for(let i=1;i<=maxIter;i++){
+    const fx=f(x); const dfx=df(x);
+    if(Math.abs(dfx)<1e-14){g('nr-result').innerHTML='<div class="rf-error">Derivative ≈ 0. Division by zero risk — try a different x₀.</div>';return;}
+    const x1=x-fx/dfx; const err=Math.abs(x1-x);
+    rows.push([i, +x.toPrecision(10), +fx.toPrecision(6), +dfx.toPrecision(6), +x1.toPrecision(10), +err.toExponential(4)]);
+    xVals.push(i); errVals.push(err);
+    if(err<tol&&Math.abs(f(x1))<tol){root=x1;iter=i;converged=true;break;}
+    x=x1; iter=i; root=x1;
+  }
+  rfShowResult('nr-result', root, iter, converged, `f(root) = ${f(root).toExponential(6)}`);
+  rfShowTable(rows,['n','xₙ','f(xₙ)','f\'(xₙ)','xₙ₊₁','|xₙ₊₁-xₙ|']);
+  rfBuildChart(xVals, errVals, '|xₙ₊₁ - xₙ|', 'Newton-Raphson — Error vs Iteration');
+}
+
+// FIXED-POINT ITERATION
+function rfRunIteration(){
+  const gxStr=g('fp-gx').value.trim();
+  let x=+g('fp-x0').value;
+  const tol=+g('fp-tol').value, maxIter=+g('fp-max').value;
+  const gf=xv=>rfEval(gxStr,xv);
+  const rows=[]; const xVals=[]; const errVals=[];
+  let converged=false; let root=x; let iter=0;
+  for(let i=1;i<=maxIter;i++){
+    const x1=gf(x);
+    if(!isFinite(x1)||isNaN(x1)){g('fp-result').innerHTML='<div class="rf-error">Diverged: g(x) is not finite. Choose a better g(x) with |g\'(x)|&lt;1 near the root.</div>';return;}
+    const err=Math.abs(x1-x);
+    rows.push([i, +x.toPrecision(10), +x1.toPrecision(10), +err.toExponential(4)]);
+    xVals.push(i); errVals.push(err);
+    if(err<tol){root=x1;iter=i;converged=true;break;}
+    x=x1; iter=i; root=x1;
+    if(iter>=maxIter&&!converged){converged=false;}
+  }
+  rfShowResult('fp-result', root, iter, converged, converged?`g(root) = ${gf(root).toPrecision(10)}`:'');
+  rfShowTable(rows,['n','xₙ','xₙ₊₁ = g(xₙ)','|xₙ₊₁-xₙ|']);
+  rfBuildChart(xVals, errVals, '|xₙ₊₁ - xₙ|', 'Fixed-Point Iteration — Error vs Iteration');
+}
+
+// REGULA FALSI
+function rfRunRegulaFalsi(){
+  const fxStr=g('rf-fx').value.trim();
+  let a=+g('rf-a').value, b=+g('rf-b').value;
+  const tol=+g('rf-tol').value, maxIter=+g('rf-max').value;
+  const f=x=>rfEval(fxStr,x);
+  if(f(a)*f(b)>0){g('rf-result').innerHTML='<div class="rf-error">f(a) and f(b) must have opposite signs!</div>';return;}
+  const rows=[]; const xVals=[]; const errVals=[];
+  let converged=false; let root=0; let iter=0; let prevC=null;
+  for(let i=1;i<=maxIter;i++){
+    const fa=f(a), fb=f(b);
+    const c=(a*fb-b*fa)/(fb-fa); const fc=f(c);
+    const err=prevC!==null?Math.abs(c-prevC):Math.abs(b-a);
+    rows.push([i, +a.toPrecision(8), +b.toPrecision(8), +c.toPrecision(10), +fa.toPrecision(6), +fc.toPrecision(6), +err.toExponential(4)]);
+    xVals.push(i); errVals.push(err);
+    if(Math.abs(fc)<tol||(prevC!==null&&err<tol)){root=c;iter=i;converged=true;break;}
+    if(fa*fc<0)b=c; else a=c;
+    prevC=c; iter=i; root=c;
+  }
+  rfShowResult('rf-result', root, iter, converged, `f(root) = ${f(root).toExponential(6)}`);
+  rfShowTable(rows,['n','a','b','c (false pos)','f(a)','f(c)','|c-cₚ|']);
+  rfBuildChart(xVals, errVals, 'Error', 'Regula-Falsi — Error vs Iteration');
+}
+
+// MULLER
+function rfRunMuller(){
+  const fxStr=g('ml-fx').value.trim();
+  let x0=+g('ml-x0').value, x1=+g('ml-x1').value, x2=+g('ml-x2').value;
+  const tol=+g('ml-tol').value, maxIter=+g('ml-max').value;
+  const f=x=>rfEval(fxStr,x);
+  const rows=[]; const xVals=[]; const errVals=[];
+  let converged=false; let root=x2; let iter=0;
+  for(let i=1;i<=maxIter;i++){
+    const f0=f(x0), f1=f(x1), f2=f(x2);
+    const h0=x1-x0, h1=x2-x1;
+    const d0=(f1-f0)/h0, d1=(f2-f1)/h1;
+    const a=(d1-d0)/(h1+h0);
+    const b=a*h1+d1;
+    const cc=f2;
+    const disc=b*b-4*a*cc;
+    if(disc<0){
+      // complex root: take real part only
+      const x3=x2-2*cc/(b);
+      const err=Math.abs(x3-x2);
+      rows.push([i, +x0.toPrecision(8), +x1.toPrecision(8), +x2.toPrecision(8), 'complex', +err.toExponential(4)]);
+      xVals.push(i); errVals.push(err);
+      if(err<tol){root=x3;iter=i;converged=true;break;}
+      x0=x1; x1=x2; x2=x3; iter=i; root=x3; continue;
+    }
+    const sq=Math.sqrt(disc);
+    const denom=Math.abs(b+sq)>Math.abs(b-sq)?b+sq:b-sq;
+    const x3=x2-2*cc/denom;
+    const err=Math.abs(x3-x2);
+    rows.push([i, +x0.toPrecision(8), +x1.toPrecision(8), +x2.toPrecision(8), +x3.toPrecision(10), +err.toExponential(4)]);
+    xVals.push(i); errVals.push(err);
+    if(err<tol&&Math.abs(f(x3))<tol){root=x3;iter=i;converged=true;break;}
+    x0=x1; x1=x2; x2=x3; iter=i; root=x3;
+  }
+  rfShowResult('ml-result', root, iter, converged, `f(root) = ${f(root).toExponential(6)}`);
+  rfShowTable(rows,['n','x₀','x₁','x₂','x₃ (new)','|x₃-x₂|']);
+  rfBuildChart(xVals, errVals, '|x₃ - x₂|', "Müller's Method — Error vs Iteration");
 }
 
 // ─── CHART BUILDER ───────────────────────────────────────
